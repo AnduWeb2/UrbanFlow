@@ -1,12 +1,16 @@
 import React from "react";
 import "./home.css";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
+
 
 const Home = () => {
     const navigate = useNavigate();
   const handleAcces = () => {
         navigate('/login');
   }
+
+  
   return (
     <div className="home-container">
       <section className="hero-section">
@@ -57,8 +61,7 @@ const Home = () => {
         <div className="impact-grid">
           <div>📍 1 oraș integrat</div>
           <div>🧍‍♀️ 30.000+ utilizatori activi</div>
-          <div>🍃 21 tone CO₂ economisite</div>
-          <div>🚲 1.500.000 km sustenabili</div>
+          <div>🚍 135 rute disponibile</div>
         </div>
       </section>
 

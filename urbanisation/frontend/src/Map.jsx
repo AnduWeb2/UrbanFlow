@@ -10,6 +10,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import {toast} from 'react-toastify';
 import { useNavigate } from "react-router-dom";
 import { refreshAccessToken } from "./utils";
+import { verifyStaffToken } from "./utils";
 
 
 function Map({fetchUserPoints}) {
@@ -43,6 +44,8 @@ function Map({fetchUserPoints}) {
         console.log("Filtered Routes:", filtered); 
         setShowResults(true);
     };
+
+        
 
     const handleClickOutside = (e) => { // Cand dam clikc pe afara sa se inchida lista de rezultate
         if (searchBarRef.current && !searchBarRef.current.contains(e.target)) {
@@ -278,7 +281,9 @@ function Map({fetchUserPoints}) {
                     <h3>Selected Route: <strong>{selectedRouteName || "None"}</strong></h3>
                     <h4>Last Selected Route: {lastSelectedRouteName || "None"}</h4>
                 </div>
-                <button onClick={addRouteToFavorites}>Add selected route to favorites</button>
+                {!verifyStaffToken() && (
+                    <button onClick={addRouteToFavorites}>Add selected route to favorites</button>
+                )}
             </div>
             <div style={{ height: "50vh", width: "50vw" }} className="map-container">
                 <MapContainer

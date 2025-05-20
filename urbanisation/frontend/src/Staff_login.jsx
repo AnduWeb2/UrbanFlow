@@ -26,10 +26,15 @@ function StaffLogin() {
             const response = await axios.post('http://127.0.0.1:8000/api/user/staff/login/', formData);
             toast.success('Login successful!'); 
             console.log('Login Response:', response.data);
-            localStorage.setItem('access_token', response.data.token);
+            const tokenresponse = await axios.post('http://127.0.0.1:8000/api/user/token/', {
+                username: formData.username,
+                password: formData.password
+            });
+            localStorage.setItem('access_token', tokenresponse.data.access);
+            localStorage.setItem('refresh_token', tokenresponse.data.refresh);
             localStorage.setItem('staff-username', response.data.username);
-            navigate('/staff-dashboard'); // Redirect to dashboard or home page after successful login
-            // Redirect to dashboard or home page after successful login
+            navigate('/staff-dashboard');
+            
         } catch (error) {
             if(error.response.status == 412) {
                 toast.error('Wait for verification from admin.');

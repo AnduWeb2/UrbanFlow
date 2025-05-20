@@ -19,7 +19,7 @@ def AddRouteReport(request):
             reportDetails = data['reportDetails']
             username = data['username']
             try:
-                user = Citzen.objects.get(username=username)
+                user = Citzen.objects.get(user__username=username)
             except Citzen.DoesNotExist:
                 return JsonResponse({"error": "User does not exist"}, status=status.HTTP_404_NOT_FOUND)
             
@@ -45,7 +45,7 @@ def getReports(request):
         for report in reports:
             report_list.append({
                 "id": report.id,
-                "user": report.user.username,
+                "user": report.user.user.username,
                 "route_name": report.route_name,
                 "report_title": report.report_title,
                 "report_details": report.report_details,
@@ -64,7 +64,7 @@ def getReportById(request, report_id):
             report = RouteReport.objects.get(id=report_id)
             report_data = {
                 "id": report.id,
-                "user": report.user.username,
+                "user": report.user.user.username,
                 "route_name": report.route_name,
                 "report_title": report.report_title,
                 "report_details": report.report_details,

@@ -1,6 +1,6 @@
 import React from "react";
 import axios from "axios";
-
+import {jwtDecode} from "jwt-decode";
 export async function refreshAccessToken() {
     const refreshToken = localStorage.getItem("refresh_token");
     if (!refreshToken) {
@@ -19,4 +19,20 @@ export async function refreshAccessToken() {
         console.error("Error refreshing access token:", error);
         return null;
     }
+}
+
+export async function verifyStaffToken() {
+    const token = localStorage.getItem("access_token");
+    if(!token) {
+        console.error("No access token found");
+        return false;
+    }
+    else {
+        const decodedToken = jwtDecode(token);
+        console.log("Decoded token:", decodedToken.is_staff);
+        if (decodedToken.is_staff == false) {
+            return false;
+        }
+    }
+    return true;
 }

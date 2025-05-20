@@ -167,3 +167,11 @@ def getPoints(request):
             return JsonResponse({"error": str(e)}, status=500)
     else:
         return JsonResponse({"error": "Invalid request method"}, status = status.HTTP_405_METHOD_NOT_ALLOWED)
+
+
+def getUserNumber(request):
+    if request.method == 'GET':
+        userNum = CustomUser.objects.count()
+        return JsonResponse({"userNum": userNum}, status=200)
+    else:
+        return JsonResponse({"error": "Invalid request method"}, status=status.HTTP_405_METHOD_NOT_ALLOWED)

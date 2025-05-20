@@ -19,7 +19,7 @@ class StaffUser(models.Model):
     document = models.ForeignKey(File, on_delete=models.CASCADE)
     
     def __str__(self):
-        return self.username
+        return self.user.username
 
 class Citzen(models.Model):
     user = models.OneToOneField(CustomUser, on_delete=models.CASCADE)

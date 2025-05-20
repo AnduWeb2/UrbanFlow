@@ -3,7 +3,7 @@
   color: #2e55b6;
 }
 
-/* Hero Section */
+
 .hero-section {
   background-color: #f0f4ff;
   text-align: center;
@@ -43,7 +43,7 @@
   background-color: #1d3e8e;
 }
 
-/* Info Section */
+
 .info-section {
   background-color: #ffffff;
   text-align: center;
@@ -63,7 +63,7 @@
   font-size: 16px;
 }
 
-/* Features Section */
+
 .features-section {
   background-color: #eaf4fc;
   padding: 60px 20px;
@@ -87,14 +87,14 @@
   font-size: 16px;
 }
 
-/* App Section */
+
 .app-section {
   background-color: #ffffff;
   text-align: center;
   padding: 60px 20px;
 }
 
-/* Impact Section */
+
 .impact-section {
   background-color: #f9fafb;
   padding: 60px 20px;
@@ -110,7 +110,7 @@
   margin-top: 30px;
 }
 
-/* Footer */
+
 .footer {
   background-color: #f0f4ff;
   text-align: center;

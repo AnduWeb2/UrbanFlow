@@ -85,7 +85,7 @@ a {
 .dashboard {
   display: flex;
   flex-direction: column;
-  height: 100vh; /* Ocupă întreaga înălțime a paginii */
+  height: 100vh; 
 }
 .dashboard header {
   background-color: #2E55B6;
@@ -94,29 +94,29 @@ a {
   text-align: center;
 }
 .dashboard main {
-  flex: 1; /* Ocupă spațiul rămas */
+  flex: 1; 
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  gap: 0px; /* Spațiu între elemente */
+  gap: 0px; 
   padding: 20px;
 }
-/* Navbar */
+
 .navbar {
-  position: absolute; /* Poziționează navbar-ul absolut */
+  position: absolute; 
   top: 0;
   left: 0;
-  width: 100%; /* Ocupă întreaga lățime a paginii */
+  width: 100%; 
 
   color: white;
   padding: 10px 20px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   display: flex;
-  justify-content: flex-start; /* Aliniază elementele la stânga */
+  justify-content: flex-start; 
   align-items: center;
-  gap: 20px; /* Spațiu între elemente */
-  z-index: 1000; /* Asigură-te că navbar-ul este deasupra altor elemente */
+  gap: 20px; 
+  z-index: 1000; 
 }
 
 .navbar-title {
@@ -127,7 +127,7 @@ a {
 
 .navbar-links {
   display: flex;
-  gap: 15px; /* Spațiu între butoane */
+  gap: 15px; 
 }
 
 .navbar-button, .navbar-button-logout, .navbar-button-favRoutes, .navbar-button-shop {
@@ -180,7 +180,7 @@ a {
   border-color: #2E55B6;
 }
 
-/* Search Results */
+
 .search-results {
   position: absolute;
   top: 50px;
@@ -302,11 +302,11 @@ a {
 body, html {
   margin: 0;
   padding: 0;
-  overflow-x: hidden; /* Ascunde scroll-ul orizontal */
+  overflow-x: hidden; 
   height: 100%;
 }
 .report-route {
-  background: linear-gradient(to bottom, #2E55B6, #1E3C72); /* Fundal gradient */
+  background: linear-gradient(to bottom, #2E55B6, #1E3C72);
   background-repeat: no-repeat;
   background-size: 100% 100%;
   color: white;
@@ -334,7 +334,7 @@ body, html {
 }
 .report-route .navbar-links {
   display: flex;
-  gap: 15px; /* Spațiu între butoane */
+  gap: 15px; 
 }
 .report-route .navbar-links button {
   background-color: #64A8D3;
@@ -388,7 +388,7 @@ body, html {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 5px; /* Spațiu între etichete și câmpuri */
+  gap: 5px; 
 }
 
 .logo-login {
@@ -474,14 +474,14 @@ body, html {
   height: 100vh;
 }
 .staff-dashboard main {
-  flex: 1; /* Ocupă spațiul rămas */
+  flex: 1; 
   display: flex;
   justify-content: left;
   align-items: left;
   flex-direction: column;
-  gap: 0px; /* Spațiu între elemente */
+  gap: 0px; 
   padding: 20px;
-  margin-top: 40px; /* Adaugă un spațiu deasupra pentru a evita suprapunerea cu header-ul */
+  margin-top: 40px; 
 }
 .report-list {
   list-style: none;
@@ -584,17 +584,17 @@ body, html {
   background-color: #D32F2F;
 }
 .search-result-item.eco-friendly {
-  background-color: #e6ffe6; /* Fundal verde deschis pentru rutele eco-friendly */
-  border-left: 5px solid #4caf50; /* Linie verde pe marginea stângă */
+  background-color: #e6ffe6; 
+  border-left: 5px solid #4caf50; 
 }
 
 .search-result-item.eco-friendly:hover {
-  background-color: #ccffcc; /* Fundal mai intens la hover */
+  background-color: #ccffcc; 
 }
 
 .eco-friendly-indicator {
   margin-left: 10px;
-  color: #4caf50; /* Verde pentru indicator */
+  color: #4caf50; 
   font-weight: bold;
 }
 .user-points {
@@ -610,7 +610,7 @@ body, html {
   color: #4caf50; 
   z-index: 1000; 
 }
-/* Grupul de checkbox-uri */
+
 .checkbox-group {
   display: flex;
   flex-direction: column;
@@ -618,7 +618,7 @@ body, html {
   margin-top: 10px;
 }
 
-/* Stilizare pentru fiecare checkbox */
+
 .checkbox-group label {
   display: flex;
   align-items: center;
@@ -635,7 +635,7 @@ body, html {
 }
 .points-logo {
   display: block;
-  margin: 0px auto; /* Centrare și spațiere față de alte elemente */
-  width: 100px; /* Ajustează dimensiunea logo-ului */
+  margin: 0px auto; 
+  width: 100px; 
   height: 100px;
 }

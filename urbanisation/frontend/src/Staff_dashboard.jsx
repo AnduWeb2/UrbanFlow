@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { toast } from "react-toastify";
 import Map from "./Map";
+import { jwtDecode } from "jwt-decode";
 
 function StaffDashboard() {
   const navigate = useNavigate();
@@ -13,7 +14,10 @@ function StaffDashboard() {
   const [viewMap, setViewMap] = useState(false)
   useEffect(() => {
     const token = localStorage.getItem("access_token");
-    if (!token) {
+    const decodedToken = jwtDecode(token);
+    console.log("Decoded token:", decodedToken.is_staff);
+    if (!token || decodedToken.is_staff == false) {
+      toast.error("You are not authorized to access this page.");
       navigate("/login");
     } else {
       setUsername(localStorage.getItem("staff-username"));
