@@ -1,0 +1,100 @@
+.points-shop {
+    text-align: center;
+    padding: 20px;
+    
+    font-family: 'Arial', sans-serif;
+    min-height: 100vh;
+}
+
+.points-shop h2 {
+    font-size: 2.5rem;
+    color: #ffffff;
+    margin-bottom: 15px;
+    font-weight: bold;
+}
+
+.points-shop p {
+    font-size: 1.1rem;
+    color: #ffffff;
+    margin-bottom: 30px;
+}
+
+.items-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+}
+
+.item-card {
+    background: linear-gradient(135deg, #6dd5ed, #2193b0);
+    border-radius: 12px;
+    padding: 20px;
+    width: 300px;
+    text-align: left;
+    color: #fff;
+    transition: transform 0.3s, box-shadow 0.3s;
+    position: relative;
+    overflow: hidden;
+}
+
+.item-card::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.2), transparent);
+    transform: rotate(45deg);
+    z-index: 0;
+}
+
+.item-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+}
+
+.item-card h3 {
+    font-size: 1.8rem;
+    margin-bottom: 10px;
+    font-weight: bold;
+    z-index: 1;
+    position: relative;
+}
+
+.item-price {
+    font-size: 1.3rem;
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: #ffdd59;
+    z-index: 1;
+    position: relative;
+}
+
+.item-description {
+    font-size: 1rem;
+    color: #ecf0f1;
+    z-index: 1;
+    position: relative;
+}
+
+.buy-button {
+    background: #08d800;
+    color: #2c3e50;
+    border: none;
+    border-radius: 8px;
+    padding: 10px 20px;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.3s, transform 0.2s;
+    z-index: 1;
+    position: relative;
+    
+}
+
+.buy-button:hover {
+    background: #ffc107;
+    transform: scale(1.05);
+}
