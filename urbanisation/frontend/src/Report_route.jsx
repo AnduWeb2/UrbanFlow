@@ -41,7 +41,7 @@ function RouteReport() {
       navigate("/login");
     }
     try {
-      const response = await axios.post('https://fiicode-urbanisation.onrender.com/api/raports/add/', formData);
+      const response = await axios.post('http://127.0.0.1:8000/api/raports/add/', formData);
       if (response.status === 201) {
         toast.success('Report submitted successfully!');
       }

@@ -23,7 +23,7 @@ function StaffLogin() {
         e.preventDefault();
 
         try {
-            const response = await axios.post('https://fiicode-urbanisation.onrender.com/api/user/staff/login/', formData);
+            const response = await axios.post('http://127.0.0.1:8000/api/user/staff/login/', formData);
             toast.success('Login successful!'); 
             console.log('Login Response:', response.data);
             localStorage.setItem('access_token', response.data.token);

@@ -26,7 +26,7 @@ function StaffRegister() {
         let fileForm = new FormData();
         fileForm.append('file', file, file.name);
         if (file) {
-            const response = await axios.post('https://fiicode-urbanisation.onrender.com/api/files/add/', fileForm);
+            const response = await axios.post('http://127.0.0.1:8000/api/files/add/', fileForm);
             setFormData({...formData, document_id: response.data});
             console.log('File upload response:', response.data);
         }
@@ -35,7 +35,7 @@ function StaffRegister() {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            const response = await axios.post('https://fiicode-urbanisation.onrender.com/api/user/staff/signup/', formData);
+            const response = await axios.post('http://127.0.0.1:8000/api/user/staff/signup/', formData);
             console.log('Registration Response:', response.data);
             toast.success('Registration successful!');
             navigate('/staff-login'); // Redirect to login page after successful registration

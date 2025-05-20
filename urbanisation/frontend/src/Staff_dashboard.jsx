@@ -24,7 +24,7 @@ function StaffDashboard() {
   const fetchReports = async () => {
     try {
       const token = localStorage.getItem("access_token");
-      const response = await axios.get("https://fiicode-urbanisation.onrender.com/api/raports/get/", {
+      const response = await axios.get("http://127.0.0.1:8000/api/raports/get/", {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -124,7 +124,7 @@ function ReportDetails({ report, onBack }) {
     try {
       const token = localStorage.getItem("access_token");
       const response = await axios.post(
-        `https://fiicode-urbanisation.onrender.com/api/raports/close/${report.id}/`,
+        `http://127.0.0.1:8000/api/raports/close/${report.id}/`,
         { reason },
         {
           headers: {

@@ -41,7 +41,7 @@ function Dashboard({showPointsShop}) {
             navigate("/login");
         }
         try {
-            const response = await axios.get("https://fiicode-urbanisation.onrender.com/api/routes/get-favorites/", {
+            const response = await axios.get("http://127.0.0.1:8000/api/routes/get-favorites/", {
                 headers: {
                     Authorization: `Bearer ${token}`,
                 },
@@ -71,7 +71,7 @@ function Dashboard({showPointsShop}) {
             navigate("/login");
         }
         try {
-            const response = await axios.delete(`https://fiicode-urbanisation.onrender.com/api/routes/delete-favorite/${routeId}/`, {
+            const response = await axios.delete(`http://127.0.0.1:8000/api/routes/delete-favorite/${routeId}/`, {
                 headers: {
                     Authorization: `Bearer ${token}`,
                 },
@@ -109,7 +109,7 @@ function Dashboard({showPointsShop}) {
     const token = localStorage.getItem("access_token");
 
     try {
-        const response = await axios.get("https://fiicode-urbanisation.onrender.com/api/user/get_points/", {
+        const response = await axios.get("http://127.0.0.1:8000/api/user/get_points/", {
             headers: {
                 Authorization: `Bearer ${token}`,
             },
@@ -125,7 +125,7 @@ function Dashboard({showPointsShop}) {
 
             if (newToken) {
                 try {
-                    const retryResponse = await axios.get("https://fiicode-urbanisation.onrender.com/api/user/get_points/", {
+                    const retryResponse = await axios.get("http://127.0.0.1:8000/api/user/get_points/", {
                         headers: {
                             Authorization: `Bearer ${newToken}`,
                         },

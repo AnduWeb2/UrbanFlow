@@ -115,7 +115,7 @@ function Map({fetchUserPoints}) {
             const token = localStorage.getItem("access_token");
             try {
                 const response = await axios.post(
-                    "https://fiicode-urbanisation.onrender.com/api/user/add_points/",
+                    "http://127.0.0.1:8000/api/user/add_points/",
                     { points: 10 }, // Trimite punctele către backend
                     {
                         headers: {
@@ -135,7 +135,7 @@ function Map({fetchUserPoints}) {
                     if (newtoken) {
                         try {
                             const retryresponse = await axios.post(
-                                "https://fiicode-urbanisation.onrender.com/api/user/add_points/",
+                                "http://127.0.0.1:8000/api/user/add_points/",
                                 { points: 10 }, // Trimite punctele către backend
                                 {
                                     headers: {
@@ -207,7 +207,7 @@ function Map({fetchUserPoints}) {
             token: token,
         });
         try {
-            const response = await axios.post("https://fiicode-urbanisation.onrender.com/api/routes/add-favorite/", {
+            const response = await axios.post("http://127.0.0.1:8000/api/routes/add-favorite/", {
                 route_id: selectedRouteId,
                 route_name: selectedRouteName,
                 token: token,

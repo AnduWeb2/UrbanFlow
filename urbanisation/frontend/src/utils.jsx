@@ -9,7 +9,7 @@ export async function refreshAccessToken() {
     }
 
     try {
-        const response = await axios.post("https://fiicode-urbanisation.onrender.com/api/user/token/refresh/", {
+        const response = await axios.post("http://127.0.0.1:8000/api/user/token/refresh/", {
             refresh: refreshToken,
         });
         const newAccessToken = response.data.access;

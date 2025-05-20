@@ -28,7 +28,7 @@ function CitizenRegister() {
     e.preventDefault();
     console.log('Form Data:', formData);
     try {
-      const response = await axios.post('https://fiicode-urbanisation.onrender.com/api/user/citzen/signup/', formData);
+      const response = await axios.post('http://127.0.0.1:8000/api/user/citzen/signup/', formData);
       
       console.log('Register Response:', response.data);
       toast.success('Registration successful!'); // Show success message using toast

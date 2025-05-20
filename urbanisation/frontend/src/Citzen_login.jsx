@@ -23,10 +23,10 @@ function CitizenLogin() {
         e.preventDefault();
 
         try {
-            const response = await axios.post('https://fiicode-urbanisation.onrender.com/api/user/citizen/login/', formData);
+            const response = await axios.post('http://127.0.0.1:8000/api/user/citizen/login/', formData);
             toast.success('Login successful!'); 
             console.log('Login Response:', response.data);
-            const tokenresponse = await axios.post('https://fiicode-urbanisation.onrender.com/api/user/token/', {
+            const tokenresponse = await axios.post('http://127.0.0.1:8000/api/user/token/', {
                 username: formData.username,
                 password: formData.password
             });
