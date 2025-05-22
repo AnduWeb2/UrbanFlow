@@ -1,16 +1,40 @@
-import React from "react";
+import React, { use, useState } from "react";
 import "./home.css";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
-
+import { useEffect } from "react";
 
 const Home = () => {
     const navigate = useNavigate();
+    const [userNumber, setUserNumber] = useState(null);
   const handleAcces = () => {
         navigate('/login');
   }
+  const getUserNumber = async () => {
+    try {
+        const response = await axios.get("http://127.0.0.1:8000/api/user/get_userNumber/");
+        const userNumber = response.data.userNum;
+        console.log("User number:", userNumber);
+        setUserNumber(userNumber);
+        console.log("User number state:", userNumber);
+        return userNumber;
+    } catch (error) {
+        console.error("Error fetching user number:", error);
+        return null;
+    }
+  }
+  useEffect(() => {
+    const fetchUserNumber = async () => {
+        const userNumber = await getUserNumber();
+        if (userNumber) {
+            console.log("Fetched user number:", userNumber);
+            setUserNumber(userNumber);
+        }
+    };
+    fetchUserNumber();
+  }, []);
 
-  
+
   return (
     <div className="home-container">
       <section className="hero-section">
@@ -60,7 +84,7 @@ const Home = () => {
         <h2 className="section-title">Impactul nostru</h2>
         <div className="impact-grid">
           <div>📍 1 oraș integrat</div>
-          <div>🧍‍♀️ 30.000+ utilizatori activi</div>
+          <div>🧍‍♀️ {userNumber} utilizatori activi</div>
           <div>🚍 135 rute disponibile</div>
         </div>
       </section>
