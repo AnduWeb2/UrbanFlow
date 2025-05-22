@@ -49,9 +49,9 @@ const Home = () => {
           Mobilitate urbană sustenabilă, gândită pentru viitor
         </h2>
         <p className="section-text">
-          UrbanFlow integrează informații din transportul public, ridesharing,
-          biciclete și alte opțiuni eco-friendly pentru a oferi rute optimizate
-          în timp real și comunicare directă cu autoritățile.
+          UrbanFlow integrează informații din transportul public
+          pentru a oferi rute optimizate si eco-friendly
+          în timp real. Deasemenea este integrata si comunicarea directă cu autoritățile.
         </p>
       </section>
 

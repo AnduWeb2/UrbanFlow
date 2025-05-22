@@ -2,9 +2,11 @@ from django.shortcuts import render
 from rest_framework.parsers import JSONParser
 from django.http.response import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
-from user.models import Citzen, CitzenToken
+from user.models import Citzen, CustomUser
 from rest_framework import status
 from .models import FavoriteRoute
+from rest_framework.decorators import api_view
+
 
 # Create your views here.
 @csrf_exempt
@@ -16,10 +18,10 @@ def addFavorite(request):
             print(data) 
             route_id = data['route_id']
             route_name = data['route_name']
-            token = data['token']
-            user = CitzenToken.objects.get(token=token).user
+            username = data['username']
+            user = CustomUser.objects.get(username=username)
             print(user)
-            if FavoriteRoute.objects.filter(route_id=route_id, user=user).exists():
+            if FavoriteRoute.objects.filter(route_id=route_id, user__username=username).exists():
                 return JsonResponse({"error": "Favorite already exists"}, status=408)
             FavoriteRoute.objects.create(route_id=route_id, route_name=route_name, user=user)
             return JsonResponse({"message": "Favorite added successfully"}, status=201)
@@ -30,16 +32,16 @@ def addFavorite(request):
 
     
         
-
+@api_view(['GET'])
 def getFavorites(request):
     if request.method == 'GET':
         try:
             token = request.headers.get('Authorization')
             if not token:
                 return JsonResponse({"error": "Token is required"}, status=400)
-            if token.startswith("Bearer "):
-                token = token[7:]
-            user = CitzenToken.objects.get(token=token).user
+            #if token.startswith("Bearer "):
+               # token = token[7:]
+            user = request.user
             if not user:
                 return JsonResponse({"error": "Invalid token"}, status=401)
             favorites = FavoriteRoute.objects.filter(user=user)
@@ -55,7 +57,7 @@ def getFavorites(request):
             return JsonResponse({"error": str(e)}, status=500)
     else:
         return JsonResponse({"error": "Invalid request method"}, status=status.HTTP_405_METHOD_NOT_ALLOWED)
-
+@api_view(['DELETE'])
 @csrf_exempt
 def deleteFavorite(request, route_id):
     if request.method == 'DELETE':
@@ -63,9 +65,8 @@ def deleteFavorite(request, route_id):
             token = request.headers.get('Authorization')
             if not token:
                 return JsonResponse({"error": "Token is required"}, status=400)
-            if token.startswith("Bearer "):
-                token = token[7:]
-            user = CitzenToken.objects.get(token=token).user
+            
+            user = request.user
             if not user:
                 return JsonResponse({"error": "Invalid token"}, status=401)
             favorite = FavoriteRoute.objects.filter(route_id=route_id, user=user)

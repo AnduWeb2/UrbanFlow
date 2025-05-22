@@ -11,7 +11,7 @@ import {toast} from 'react-toastify';
 import { useNavigate } from "react-router-dom";
 import { refreshAccessToken } from "./utils";
 import { verifyStaffToken } from "./utils";
-
+import { jwtDecode } from "jwt-decode";
 
 function Map({fetchUserPoints}) {
     const mapRef = useRef(null);
@@ -204,16 +204,22 @@ function Map({fetchUserPoints}) {
             console.error("Route ID or name is missing.");
             return;
         }
+        const decodedToken = jwtDecode(token);
+        const user = decodedToken.username
+        if (decodedToken.is_staff === true) {
+            toast.error("You are not allowed to add routes to favorites.");
+            return;
+        }
         setRouteFavorite({
             route_id: selectedRouteId,
             route_name: selectedRouteName,
-            token: token,
+            username: user,  
         });
         try {
             const response = await axios.post("http://127.0.0.1:8000/api/routes/add-favorite/", {
                 route_id: selectedRouteId,
                 route_name: selectedRouteName,
-                token: token,
+                username: user,
             });
             if (response.status === 201) {
                 toast.success("Route added to favorites!");
@@ -281,9 +287,8 @@ function Map({fetchUserPoints}) {
                     <h3>Selected Route: <strong>{selectedRouteName || "None"}</strong></h3>
                     <h4>Last Selected Route: {lastSelectedRouteName || "None"}</h4>
                 </div>
-                {!verifyStaffToken() && (
-                    <button onClick={addRouteToFavorites}>Add selected route to favorites</button>
-                )}
+                <button onClick={addRouteToFavorites}>Add selected route to favorites</button>
+                
             </div>
             <div style={{ height: "50vh", width: "50vw" }} className="map-container">
                 <MapContainer
