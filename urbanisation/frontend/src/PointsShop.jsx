@@ -1,5 +1,5 @@
 import React from "react";
-import "./PointsShop.css"; // Importăm fișierul CSS
+import "./PointsShop.css"; 
 import { toast } from "react-toastify";
 
 const PointsShop = () => {

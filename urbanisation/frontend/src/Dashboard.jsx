@@ -50,14 +50,14 @@ function Dashboard({showPointsShop}) {
                 console.log("Favorite Routes:", response.data);
                 length = response.data.favorites.length;
                 console.log("test", response.data.favorites[length-1]);
-                // Handle the favorite routes data as needed
+                
                 setFavoriteRoutes(response.data.favorites);
             }
             
         }
         catch (error) {
             console.error("Error fetching favorite routes:", error);
-            // Handle error as needed
+            
             if (error.response && error.response.status === 401) {
                 navigate("/login");
             } else {
